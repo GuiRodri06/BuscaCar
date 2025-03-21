@@ -2,20 +2,20 @@ package model.entities.contas;
 
 public class Cliente extends Usuario{
 
-    private String nif;
+    private Integer nif;
     private Integer telemovel;
 
-    public Cliente(String name, String usuario, String senha, String email, String nif, Integer telemovel) {
+    public Cliente(String name, String usuario, String senha, String email, Integer nif, Integer telemovel) {
         super(name, usuario, senha, email);
         this.nif = nif;
         this.telemovel = telemovel;
     }
 
-    public String getNif() {
+    public Integer getNif() {
         return nif;
     }
 
-    public void setNif(String nif) {
+    public void setNif(Integer nif) {
         this.nif = nif;
     }
 
