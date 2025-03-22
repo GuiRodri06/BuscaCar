@@ -1,6 +1,6 @@
 package model.entities.contas;
 
-import java.util.Date;
+import java.util.Scanner;
 
 public abstract class Usuario {
 
@@ -8,6 +8,8 @@ public abstract class Usuario {
     private String usuario;
     private String senha;
     private String email;
+
+    Usuario user;
 
     public Usuario(String name, String usuario, String senha, String email) {
         this.name = name;
@@ -48,7 +50,39 @@ public abstract class Usuario {
         this.email = email;
     }
 
-    /* Metodo para verificar se o usuário e a senha estão corretos */
-    public abstract boolean autenticar();
+
+    /* Metodo para fazer login */
+    public static void login() {
+        Scanner txt = new Scanner(System.in);
+
+        System.out.print("Insira seu nome: ");
+        String nome = txt.nextLine();
+
+        System.out.print("Insira seu nome de usuario: ");
+        String nomeUsuario = txt.nextLine();
+
+        System.out.print("Insira seu email: ");
+        String email = txt.nextLine();
+
+        System.out.print("Insira sua senha: ");
+        String senha = txt.nextLine();
+
+        if (nomeUsuario.trim().equals("adm") && email.trim().equals("adm@gmail.com") && senha.trim().equals("adm123")) {
+            System.out.println("Seja bem-vindo adm!");
+            Usuario user = new Administrador(nome, nomeUsuario, senha, email);
+
+        } else {
+            System.out.println("Seja bem-vindo ao BuscaCar! Para completar preencha com as utimas informacoes");
+
+            System.out.print("Insira seu nif: ");
+            int nif = txt.nextInt();
+
+            System.out.print("Insira seu numero de telemóvel: ");
+            int telemovel = txt.nextInt();
+
+            Usuario user = new Cliente(nome, nomeUsuario, senha, email, nif, telemovel);
+
+        }
+    }
 
 }

@@ -7,9 +7,5 @@ public class Administrador extends Usuario{
         super(name, usuario, senha, email);
     }
 
-    /* Metodo para verificar se o usuário e a senha estão corretos */
-    @Override
-    public boolean autenticar() {
-        return false;
-    }
+
 }
