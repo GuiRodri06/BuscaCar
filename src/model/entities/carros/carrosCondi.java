@@ -119,6 +119,14 @@ public class carrosCondi {
         }
     }
 
+    public void calcularPrecoPorMarcaCara(String marca) {
+        // Comparação ignorando maiúsculas/minúsculas
+        marca = marca.toLowerCase();
+        if (marca.equals("Rolls-Royce") || marca.equals("Porsche") || marca.equals("Lamborghini")) {
+            preço *= 1.20; // +20%
+        }
+    }
+
 
     
 
