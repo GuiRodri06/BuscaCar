@@ -19,19 +19,20 @@ public class MenuService {
         }
     }
 
-    // ALINHAR O QUE CADA ITEM VAI FAZER
-
+    // Metodo para mostrar o menu sendo um Administrador
     public static void mostrarMenuAdmin() {
 
         System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
         System.out.println("[2] - Acessar a conta");
-        System.out.println("[3] - Acessar o carrinho");
+        System.out.println("[3] - Ver relatórios finaceiros");
     }
 
+    // Metodo para mostrar o menu sendo um Cliente
     public static void mostrarMenuCliente() {
 
         System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
         System.out.println("[2] - Acessar a conta");
         System.out.println("[3] - Acessar o carrinho");
+        System.out.println("[4] - Finalizar o aluguel");
     }
 }

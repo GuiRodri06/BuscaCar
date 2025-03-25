@@ -1,8 +1,10 @@
 package model.entities.contas;
 
+import model.entities.servicos.AcoesUsuario;
+
 import java.util.Scanner;
 
-public abstract class Usuario {
+public abstract class Usuario implements AcoesUsuario {
 
     private String name;
     private String usuario;

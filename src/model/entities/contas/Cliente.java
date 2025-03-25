@@ -1,6 +1,8 @@
 package model.entities.contas;
 
-public class Cliente extends Usuario{
+import model.entities.servicos.AcoesCliente;
+
+public class Cliente extends Usuario implements AcoesCliente {
 
     private Integer nif;
     private Integer telemovel;
@@ -30,4 +32,18 @@ public class Cliente extends Usuario{
         this.telemovel = telemovel;
     }
 
+    @Override
+    public void adcionarAoCarrinho() {
+
+    }
+
+    @Override
+    public void realizarCompra() {
+
+    }
+
+    @Override
+    public void acessarConta() {
+
+    }
 }
