@@ -97,7 +97,7 @@ public class carrosCondi {
 
     //para carros electricos, o preço é reduzido em 20%
     public void calcularPrecoEletrico(String conbustivel) {
-        if (conbustivel == "eletrico") {
+        if (conbustivel.equalsIgnoreCase("eletrico")) {
             preço = (int) (preço / 1.20); 
             
         }
@@ -105,13 +105,19 @@ public class carrosCondi {
 
     //para carros Hybridos, o preço é reduzido em 10%
     public void calcularPrecoHybrido(String conbustivel) {
-        if (conbustivel == "hybrido") {
+        if (conbustivel.equalsIgnoreCase("hybrido")) {
             preço = (int) (preço / 1.10); 
             
         }
     }
 
-    //para carros 
+
+    //para clientes com menos de 25 anos, o preço é aumentado em 15%
+    public void calcularPrecoPorIdadeMotorista(int idadeMotorista) {
+        if (idadeMotorista < 25) {
+            preço = (int) (preço * 1.15);
+        }
+    }
 
 
     
