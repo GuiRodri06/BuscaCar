@@ -10,9 +10,19 @@ public class carrosCondi {
     private int preço;
     private String cor;
 
-    public carrosCondi(String modelo) {
+    public carrosCondi(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
         this.modelo = modelo;
-    }
+        this.submodelo = submodelo;
+        this.km = km;
+        this.ano = ano;
+        this.conbustivel = conbustivel;
+        this.preço = preço;
+        this.cor = cor;
+    
+        }
+    
+
+    
 
     public String getName() {
         return modelo;
