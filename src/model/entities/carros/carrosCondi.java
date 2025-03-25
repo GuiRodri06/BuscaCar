@@ -111,6 +111,13 @@ public class carrosCondi {
         }
     }
 
+    //parra carros de 2024 e mais recentes, o preço é reduzido em 10%
+    public void calcularPrecoAno2024(int ano) {
+        if (ano >= 2024) {
+            preço = (int) (preço / 1.10); 
+            
+        }
+    }
     
 
 
