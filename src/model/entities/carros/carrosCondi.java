@@ -21,11 +21,11 @@ public class carrosCondi {
     
         }
     
-    public String getName() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setName(String name) {
+    public void setModelo(String name) {
         this.modelo = name;
     }
 
@@ -76,6 +76,9 @@ public class carrosCondi {
     public void setCor(String cor) {
         this.cor = cor;
     }
+
+    public void 
+
 
     
 

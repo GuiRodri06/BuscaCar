@@ -2,8 +2,8 @@ package model.entities.carros;
 
 public class AlfaRomeo extends carrosCondi {
 
-    public AlfaRomeo(String model) {
-        super(model);
+    public AlfaRomeo(String modelo) {
+        super(modelo);
     }
 
     @Override
