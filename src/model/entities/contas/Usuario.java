@@ -11,6 +11,9 @@ public abstract class Usuario {
 
     Usuario user;
 
+    public Usuario() {
+    }
+
     public Usuario(String name, String usuario, String senha, String email) {
         this.name = name;
         this.usuario = usuario;
@@ -69,6 +72,7 @@ public abstract class Usuario {
 
         if (nomeUsuario.trim().equals("adm") && email.trim().equals("adm@gmail.com") && senha.trim().equals("adm123")) {
             System.out.println("Seja bem-vindo adm!");
+
             Usuario user = new Administrador(nome, nomeUsuario, senha, email);
 
         } else {

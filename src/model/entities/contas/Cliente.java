@@ -5,6 +5,9 @@ public class Cliente extends Usuario{
     private Integer nif;
     private Integer telemovel;
 
+    public Cliente() {
+    }
+
     public Cliente(String name, String usuario, String senha, String email, Integer nif, Integer telemovel) {
         super(name, usuario, senha, email);
         this.nif = nif;
@@ -26,6 +29,5 @@ public class Cliente extends Usuario{
     public void setTelemovel(Integer telemovel) {
         this.telemovel = telemovel;
     }
-
 
 }
