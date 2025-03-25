@@ -12,12 +12,13 @@ public class Administrador extends Usuario implements AcoesAdministrador {
     }
 
     @Override
+    public void acessarConta() {
+
+    }
+    @Override
     public void visualizarRelatorios() {
 
     }
 
-    @Override
-    public void acessarConta() {
 
-    }
 }

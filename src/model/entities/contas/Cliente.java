@@ -33,6 +33,11 @@ public class Cliente extends Usuario implements AcoesCliente {
     }
 
     @Override
+    public void acessarConta() {
+
+    }
+
+    @Override
     public void adcionarAoCarrinho() {
 
     }
@@ -42,8 +47,5 @@ public class Cliente extends Usuario implements AcoesCliente {
 
     }
 
-    @Override
-    public void acessarConta() {
 
-    }
 }

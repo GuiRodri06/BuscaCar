@@ -11,7 +11,7 @@ public class MenuService {
         System.out.println("Acesse qual área você quer:");
 
         // verificar se foi instanciado um admnistrador, se nao, é um cliente
-        if (Usuario.userLogado instanceof Administrador) {
+        if (AutenticacaoLogin.userLogado instanceof Administrador) {
             mostrarMenuAdmin();
 
         } else {

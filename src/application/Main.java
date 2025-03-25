@@ -2,6 +2,7 @@ package application;
 
 import model.entities.contas.Administrador;
 import model.entities.contas.Usuario;
+import model.entities.servicos.AutenticacaoLogin;
 import model.entities.servicos.MenuService;
 
 import java.util.Locale;
@@ -18,7 +19,7 @@ public class Main {
         char ch = txt.next().charAt(0);
 
         if (ch == 's') {
-            Usuario.login(); // chama o metodo de login, se clicar em s ou sim, implementar um butao
+            AutenticacaoLogin.login(); // chama o metodo de login, se clicar em s ou sim, implementar um butao
         }
 
         MenuService.mostrarMenu(); // chama o metodo menu
