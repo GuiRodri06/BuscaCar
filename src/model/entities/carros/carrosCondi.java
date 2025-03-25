@@ -103,7 +103,13 @@ public class carrosCondi {
         }
     }
 
-    
+    //para carros Hybridos, o preço é reduzido em 10%
+    public void calcularPrecoHybrido(String conbustivel) {
+        if (conbustivel == "hybrido") {
+            preço = (int) (preço / 1.10); 
+            
+        }
+    }
 
     
 
