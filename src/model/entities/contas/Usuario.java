@@ -9,7 +9,7 @@ public abstract class Usuario {
     private String senha;
     private String email;
 
-    Usuario user;
+    public static Usuario userLogado;
 
     public Usuario() {
     }
@@ -73,7 +73,7 @@ public abstract class Usuario {
         if (nomeUsuario.trim().equals("adm") && email.trim().equals("adm@gmail.com") && senha.trim().equals("adm123")) {
             System.out.println("Seja bem-vindo adm!");
 
-            Usuario user = new Administrador(nome, nomeUsuario, senha, email);
+            userLogado = new Administrador(nome, nomeUsuario, senha, email);
 
         } else {
             System.out.println("Seja bem-vindo ao BuscaCar! Para completar preencha com as utimas informacoes");
@@ -84,7 +84,7 @@ public abstract class Usuario {
             System.out.print("Insira seu numero de telemóvel: ");
             int telemovel = txt.nextInt();
 
-            Usuario user = new Cliente(nome, nomeUsuario, senha, email, nif, telemovel);
+            userLogado = new Cliente(nome, nomeUsuario, senha, email, nif, telemovel);
 
         }
     }

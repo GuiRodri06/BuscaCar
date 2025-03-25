@@ -9,12 +9,4 @@ public class Administrador extends Usuario{
         super(name, usuario, senha, email);
     }
 
-    // metodo para verificar se a paessoa é um administrador
-    public static void verificarAdmin() {
-
-        if (nomeUsuario.trim().equals("adm") && email.trim().equals("adm@gmail.com") && senha.trim().equals("adm123")) {
-
-        }
-    }
-
 }
