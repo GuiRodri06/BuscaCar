@@ -21,9 +21,6 @@ public class carrosCondi {
     
         }
     
-
-    
-
     public String getName() {
         return modelo;
     }
@@ -31,6 +28,58 @@ public class carrosCondi {
     public void setName(String name) {
         this.modelo = name;
     }
+
+    public String getSubmodelo() {
+        return submodelo;
+    }
+
+    public void setSubmodelo(String submodelo) {
+        this.submodelo = submodelo;
+    }
+
+    public int getKm() {
+        return km;
+    }
+
+    public void setKm(int km) {
+        this.km = km;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getConbustivel() {
+        return conbustivel;
+    }
+
+    public void setConbustivel(String conbustivel) {
+        this.conbustivel = conbustivel;
+    }
+
+    public int getPreço() {
+        return preço;
+    }
+
+    public void setPreço(int preço) {
+        this.preço = preço;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    
+
+
 
     
 }
