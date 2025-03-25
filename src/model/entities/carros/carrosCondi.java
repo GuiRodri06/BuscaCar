@@ -119,11 +119,22 @@ public class carrosCondi {
         }
     }
 
+    //para carros de marcas Rolls-Royce, Porsche e Lamborghini, o preço é aumentado em 20%
     public void calcularPrecoPorMarcaCara(String marca) {
         // Comparação ignorando maiúsculas/minúsculas
         marca = marca.toLowerCase();
         if (marca.equals("Rolls-Royce") || marca.equals("Porsche") || marca.equals("Lamborghini")) {
             preço *= 1.20; // +20%
+        }
+    }
+
+
+    public void calcularPreçoMarcasBaixas(String marca) {
+        // Comparação ignorando maiúsculas/minúsculas
+        marca = marca.toLowerCase();
+        if (marca.equals("Fiat") || marca.equals("Renault") || marca.equals("Citroen") 
+        || marca.equals("Peugeot") || marca.equals("Opel") || marca.equals("Kia") || marca.equals("Dacia") ) {
+            preço *= 0.80; // -20%
         }
     }
 
