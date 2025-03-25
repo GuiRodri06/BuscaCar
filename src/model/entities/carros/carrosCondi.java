@@ -95,6 +95,16 @@ public class carrosCondi {
         }
     }
 
+    //para carros electricos, o preço é reduzido em 20%
+    public void calcularPrecoEletrico(String conbustivel) {
+        if (conbustivel == "eletrico") {
+            preço = (int) (preço / 1.20); 
+            
+        }
+    }
+
+    
+
     
 
 
