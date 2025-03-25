@@ -77,8 +77,23 @@ public class carrosCondi {
         this.cor = cor;
     }
 
-    public void 
 
+    //para carros com mais 100'000 km, o preço é reduzido em 25%
+    public void calcularPrecoKm100000(int km) {
+        if (km > 100000) {
+            preço = (int) (preço / 1.25); 
+            
+        }
+    }
+
+
+    //para carros com mais de 10 anos, o preço é reduzido em 10%
+    public void calcularPrecoAno10(int ano) {
+        if (ano > 10) {
+            preço = (int) (preço / 1.10); 
+            
+        }
+    }
 
     
 
