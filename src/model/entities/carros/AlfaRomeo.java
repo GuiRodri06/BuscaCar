@@ -2,13 +2,18 @@ package model.entities.carros;
 
 public class AlfaRomeo extends carrosCondi {
 
-    public AlfaRomeo(String modelo) {
-        super(modelo);
+    public AlfaRomeo(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
+        super(modelo, submodelo, km, ano, conbustivel, preço, cor);
     }
 
     @Override
     public String toString() {
-        return "AlfaRomeo [modelo=" + getName() + "]";
+        return "AlfaRomeo [modelo=" + getModelo() + "]";
     }
     
+    
+
+
+
+
 }

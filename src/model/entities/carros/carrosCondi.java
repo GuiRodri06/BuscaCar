@@ -128,7 +128,7 @@ public class carrosCondi {
         }
     }
 
-
+    //para carros de marcas Fiat, Renault, Citroen, Peugeot, Opel, Kia e Dacia, o preço é reduzido em 20%
     public void calcularPreçoMarcasBaixas(String marca) {
         // Comparação ignorando maiúsculas/minúsculas
         marca = marca.toLowerCase();
