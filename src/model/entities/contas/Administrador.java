@@ -1,6 +1,6 @@
 package model.entities.contas;
 
-import model.entities.servicos.AcoesAdministrador;
+import model.servicos.AcoesAdministrador;
 
 public class Administrador extends Usuario implements AcoesAdministrador {
 
@@ -11,14 +11,16 @@ public class Administrador extends Usuario implements AcoesAdministrador {
         super(name, usuario, senha, email);
     }
 
-    @Override
-    public void acessarConta() {
 
+    @Override
+    public String acessarConta() {
+        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", getUsuario(), getEmail(), getSenha());
+        // APLICAR UM METODO PARA ALTERAR SENHA, EMAIL E USUARIO;
     }
+
     @Override
     public void visualizarRelatorios() {
 
     }
-
 
 }

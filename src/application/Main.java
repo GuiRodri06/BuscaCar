@@ -1,9 +1,7 @@
 package application;
 
-import model.entities.contas.Administrador;
-import model.entities.contas.Usuario;
-import model.entities.servicos.AutenticacaoLogin;
-import model.entities.servicos.MenuService;
+import model.servicos.AutenticacaoLogin;
+import model.servicos.MenuService;
 
 import java.util.Locale;
 import java.util.Scanner;

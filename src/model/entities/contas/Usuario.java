@@ -1,10 +1,6 @@
 package model.entities.contas;
 
-import model.entities.servicos.AcoesUsuario;
-
-import java.util.Scanner;
-
-public abstract class Usuario implements AcoesUsuario {
+public abstract class Usuario {
 
     private String name;
     private String usuario;
@@ -33,9 +29,9 @@ public abstract class Usuario implements AcoesUsuario {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    /* public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
+    } */
 
     public String getSenha() {
         return senha;
@@ -53,10 +49,14 @@ public abstract class Usuario implements AcoesUsuario {
         this.email = email;
     }
 
-
-    @Override
-    public void acessarConta() {
-
+    // metodo para alterar o usuario
+    public void alterarUsuario(String novoUsuario) {
+        if (novoUsuario != null && !novoUsuario.isEmpty()) {
+            this.usuario = novoUsuario;
+            System.out.println("Nome de usuario alterado com sucesso!");
+        } else {
+            System.out.println("Nome de usuario inválido!");
+        }
     }
 
 }

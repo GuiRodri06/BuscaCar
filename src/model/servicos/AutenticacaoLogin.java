@@ -1,4 +1,4 @@
-package model.entities.servicos;
+package model.servicos;
 
 import model.entities.contas.Administrador;
 import model.entities.contas.Cliente;
@@ -46,4 +46,5 @@ public class AutenticacaoLogin {
             userLogado = new Cliente(nome, nomeUsuario, senha, email, nif, telemovel);
         }
     }
+
 }

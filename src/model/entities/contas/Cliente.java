@@ -1,6 +1,6 @@
 package model.entities.contas;
 
-import model.entities.servicos.AcoesCliente;
+import model.servicos.AcoesCliente;
 
 public class Cliente extends Usuario implements AcoesCliente {
 
@@ -33,8 +33,9 @@ public class Cliente extends Usuario implements AcoesCliente {
     }
 
     @Override
-    public void acessarConta() {
-
+    public String acessarConta() {
+        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", getUsuario(), getEmail(), getSenha());
+        // APLICAR UM METODO PARA ALTERAR SENHA, EMAIL E USUARIO
     }
 
     @Override
@@ -46,6 +47,5 @@ public class Cliente extends Usuario implements AcoesCliente {
     public void realizarCompra() {
 
     }
-
 
 }
