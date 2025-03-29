@@ -1,6 +1,8 @@
 package application;
 
-import model.entities.contas.Usuario;
+import model.servicos.AutenticacaoLogin;
+import model.servicos.HomePage;
+import model.servicos.MenuService;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -12,12 +14,11 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner txt = new Scanner(System.in);
 
-        System.out.print("Fazer login agora? (s/n) ");
-        char ch = txt.next().charAt(0);
+        HomePage.Home(); // chama o metodo da pagina inical
 
-        if (ch == 's') {
-            Usuario.login();
-        }
+        AutenticacaoLogin.login(); // chama o metodo de login, se clicar em s ou sim, implementar um butao
+
+        MenuService.mostrarMenu(); // chama o metodo menu
 
     }
 
