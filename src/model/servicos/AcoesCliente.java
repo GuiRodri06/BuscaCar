@@ -9,4 +9,5 @@ public interface AcoesCliente {
     void alterarEmail(String novoEmail);
     void alterarNome(String novoNome);
     void alterarSenha(String senhaAtual, String novaSenha);
+    void alterarNumero(int novoNumero);
 }

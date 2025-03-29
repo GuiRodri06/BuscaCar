@@ -13,16 +13,16 @@ public class MenuAlterar {
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado;
         int i = 0;
 
-        while (i != 5) {
-            System.out.println();
-            System.out.println("==== MENU DE ALTERACAO ====");
+        while (i != 6) {
+            System.out.println("\n==== MENU DE ALTERACAO ====");
             System.out.println("[1] - Alterar nome de usuário");
             System.out.println("[2] - Alterar a senha");
             System.out.println("[3] - Alterar e-mail");
             System.out.println("[4] - Alterar nome");
-            System.out.println("[5] - Sair");
+            System.out.println("[4] - Alterar o número de telemóvel");
+            System.out.println("[6] - Sair");
 
-            System.out.print("Escolha o que você vai querer alterar: ");
+            System.out.print("\nEscolha o que você vai querer alterar: ");
             i = txt.nextInt();
             txt.nextLine(); // limpar buffer
 
@@ -33,7 +33,8 @@ public class MenuAlterar {
                 case 2 -> alterarSenha(cliente);
                 case 3 -> alterarEmail(cliente);
                 case 4 -> alterarNome(cliente);
-                case 5 -> System.out.println("Saindo do menu de alteração...");
+                case 5 -> alterarNumero(cliente);
+                case 6 -> System.out.println("Saindo do menu de alteração...");
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
@@ -69,5 +70,18 @@ public class MenuAlterar {
         System.out.print("Digite o novo nome: ");
         String novoNome = txt.nextLine().trim();
         cliente.alterarNome(novoNome);
+    }
+
+    private static void alterarNumero(Cliente cliente) {
+        System.out.println("\n=== Alteração de Número ===");
+        System.out.print("Digite o novo número de telefone: ");
+        // Verifica se a entrada é um número válido
+        while (!txt.hasNextInt()) {
+            System.out.println("Número inválido! Digite apenas números.");
+            txt.next(); // Limpa entrada errada
+        }
+        int novoNumero = txt.nextInt();
+        txt.nextLine(); // Limpa o buffer
+        cliente.alterarNumero(novoNumero);
     }
 }

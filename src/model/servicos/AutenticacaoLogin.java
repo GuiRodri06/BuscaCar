@@ -15,6 +15,8 @@ public class AutenticacaoLogin {
     public static void login() {
         Scanner txt = new Scanner(System.in);
 
+        System.out.println("========== LOGIN ==========");
+
         System.out.print("Insira seu nome de usuário: ");
         String nomeUsuario = txt.nextLine().trim(); // .trim serve para eliminar os espacos desnecessarios
 

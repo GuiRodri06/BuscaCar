@@ -68,7 +68,7 @@ public class MenuService {
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do user e o objeto que foi instanciado
 
         while (true) {
-            System.out.println("======= MENU =======");
+            System.out.println("\n========== MENU ==========");
             System.out.println();
             System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
             System.out.println("[2] - Acessar a conta");
@@ -76,7 +76,7 @@ public class MenuService {
             System.out.println("[4] - Finalizar o aluguel");
             System.out.println("[5] - Sair");
 
-            System.out.println("Qual área voce vai querer: ");
+            System.out.print("\nQual área voce vai querer: ");
             int i = txt.nextInt();
             System.out.println();
             System.out.println("==============================");
@@ -89,16 +89,11 @@ public class MenuService {
                     System.out.println();
                     System.out.println(cliente.acessarConta());
 
-                    System.out.println();
-                    System.out.println("Vai querer fazer alguma alteracao de dados pessoais (s/n): ");
+                    System.out.print("\nVai querer fazer alguma alteracao de dados pessoais (s/n): ");
                     char ch = txt.next().charAt(0);
                     if (ch == 's') {
                         MenuAlterar.MenuAlterarDados();
                     }
-
-
-
-                    
                     break;
                 case 3:
                     System.out.println("Tem que implementar o carrinho");

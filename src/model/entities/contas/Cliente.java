@@ -34,7 +34,7 @@ public class Cliente extends Usuario implements AcoesCliente {
 
     @Override
     public String acessarConta() {
-        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", getUsuario(), getEmail(), getSenha());
+        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s \nNome completo = %s \nNúmero de telemóvel = %d \nNIF = %d", usuario, email, senha, name, telemovel, nif);
     }
 
     @Override
@@ -85,6 +85,16 @@ public class Cliente extends Usuario implements AcoesCliente {
             System.out.println("Senha alterada com sucesso!");
         } else {
             System.out.println("A senha atual está incorreta.");
+        }
+    }
+
+    @Override
+    public void alterarNumero(int novoNumero) {
+        if (novoNumero > 0) {
+            this.telemovel = novoNumero;
+            System.out.println("Número de telefone alterado com sucesso!");
+        } else {
+            System.out.println("Número inválido! O número deve ser maior que 0.");
         }
     }
 

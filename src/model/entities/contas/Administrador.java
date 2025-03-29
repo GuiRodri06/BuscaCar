@@ -11,10 +11,9 @@ public class Administrador extends Usuario implements AcoesAdministrador {
         super(name, usuario, senha, email);
     }
 
-
     @Override
     public String acessarConta() {
-        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", getUsuario(), getEmail(), getSenha());
+        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", usuario, email, senha);
         // APLICAR UM METODO PARA ALTERAR SENHA, EMAIL E USUARIO;
     }
 
