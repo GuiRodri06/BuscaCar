@@ -2,10 +2,10 @@ package model.entities.contas;
 
 public abstract class Usuario {
 
-    private String name;
-    private String usuario;
-    private String senha;
-    private String email;
+    protected String name;
+    protected String usuario;
+    protected String senha;
+    protected String email;
 
     public Usuario() {
     }
@@ -47,16 +47,6 @@ public abstract class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    // metodo para alterar o usuario
-    public void alterarUsuario(String novoUsuario) {
-        if (novoUsuario != null && !novoUsuario.isEmpty()) {
-            this.usuario = novoUsuario;
-            System.out.println("Nome de usuario alterado com sucesso!");
-        } else {
-            System.out.println("Nome de usuario inválido!");
-        }
     }
 
 }

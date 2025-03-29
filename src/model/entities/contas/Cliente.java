@@ -35,7 +35,6 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public String acessarConta() {
         return String.format("Usuario = %s \nE-mail = %s \nSenha = %s", getUsuario(), getEmail(), getSenha());
-        // APLICAR UM METODO PARA ALTERAR SENHA, EMAIL E USUARIO
     }
 
     @Override
@@ -46,6 +45,47 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public void realizarCompra() {
 
+    }
+
+    // metodo para alterar o usuario
+    @Override
+    public void alterarUsuario(String novoUsuario) {
+        if (novoUsuario != null && !novoUsuario.isEmpty()) {
+            this.usuario = novoUsuario;
+            System.out.println("Nome de usuario alterado com sucesso!");
+        } else {
+            System.out.println("Nome de usuario inválido!");
+        }
+    }
+
+    @Override
+    public void alterarEmail(String novoEmail) {
+        if (novoEmail != null && novoEmail.contains("@")) {
+            this.email = novoEmail;
+            System.out.println("E-mail alterado com sucesso!");
+        } else {
+            System.out.println("E-mail inválido.");
+        }
+    }
+
+    @Override
+    public void alterarNome(String novoNome) {
+        if (novoNome != null && !novoNome.isEmpty()) {
+            this.name = novoNome;
+            System.out.println("Nome alterado com sucesso!");
+        } else {
+            System.out.println("Nome inválido.");
+        }
+    }
+
+    @Override
+    public void alterarSenha(String senhaAtual, String novaSenha) {
+        if (this.senha.equals(senhaAtual)) {
+            this.senha = novaSenha;
+            System.out.println("Senha alterada com sucesso!");
+        } else {
+            System.out.println("A senha atual está incorreta.");
+        }
     }
 
 }

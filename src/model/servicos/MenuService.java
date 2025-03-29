@@ -93,9 +93,12 @@ public class MenuService {
                     System.out.println("Vai querer fazer alguma alteracao de dados pessoais (s/n): ");
                     char ch = txt.next().charAt(0);
                     if (ch == 's') {
-                        menuAlteracaoDeInfo();
+                        MenuAlterar.MenuAlterarDados();
                     }
 
+
+
+                    
                     break;
                 case 3:
                     System.out.println("Tem que implementar o carrinho");
@@ -110,11 +113,6 @@ public class MenuService {
             }
             System.out.println("==============================");
         }
-    }
-
-    // implementar um menu de alteracao
-    public static void menuAlteracaoDeInfo() {
-
     }
 
 }
