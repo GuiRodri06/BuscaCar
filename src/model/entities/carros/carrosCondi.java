@@ -69,7 +69,6 @@ public class carrosCondi {
         this.preço = preço;
     }
 
-    
 
 
     //para carros com mais 100'000 km, o preço é reduzido em 25%
