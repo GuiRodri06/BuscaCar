@@ -8,7 +8,7 @@ public class carrosCondi {
     private int ano;
     private String conbustivel;
     private int preço;
-    private String cor;
+    
 
     public carrosCondi(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
         this.modelo = modelo;
@@ -17,7 +17,7 @@ public class carrosCondi {
         this.ano = ano;
         this.conbustivel = conbustivel;
         this.preço = preço;
-        this.cor = cor;
+        
     
         }
     
@@ -69,13 +69,7 @@ public class carrosCondi {
         this.preço = preço;
     }
 
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
+    
 
 
     //para carros com mais 100'000 km, o preço é reduzido em 25%
