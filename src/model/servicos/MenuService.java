@@ -32,8 +32,9 @@ public class MenuService {
             System.out.println();
             System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
             System.out.println("[2] - Acessar a conta");
-            System.out.println("[3] - Ver relatórios finaceiros");
-            System.out.println("[4] - Sair");
+            System.out.println("[3] - Cadastrar um novo carro");
+            System.out.println("[4] - Ver relatórios finaceiros");
+            System.out.println("[5] - Sair");
 
             System.out.println();
             System.out.print("Qual área voce vai querer: ");
@@ -51,9 +52,12 @@ public class MenuService {
                     System.out.println(administrador.acessarConta());
                     break;
                 case 3:
-                    System.out.println("Tem que implementar um relatorio financeiro");
+                    CadastroCarroService.executarCadastro();
                     break;
                 case 4:
+                    System.out.println("Tem que implementar um relatorio financeiro");
+                    break;
+                case 5:
                     System.out.println("Saindo da aplicação... Até logo!");
                     System.exit(0); // Encerra a aplicação
                     break;
