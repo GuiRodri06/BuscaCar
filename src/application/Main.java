@@ -1,6 +1,7 @@
 package application;
 
 import model.servicos.AutenticacaoLogin;
+import model.servicos.BancoSQLite;
 import model.servicos.HomePage;
 import model.servicos.MenuService;
 
@@ -14,6 +15,8 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner txt = new Scanner(System.in);
 
+        BancoSQLite.criarTabelas();
+
         HomePage.Home(); // chama o metodo da pagina inical
 
         AutenticacaoLogin.login(); // chama o metodo de login, se clicar em s ou sim, implementar um butao
@@ -23,3 +26,4 @@ public class Main {
     }
 
 }
+

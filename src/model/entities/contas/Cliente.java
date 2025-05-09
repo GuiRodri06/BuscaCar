@@ -34,24 +34,25 @@ public class Cliente extends Usuario implements AcoesCliente {
 
     @Override
     public String acessarConta() {
-        return String.format("Usuario = %s \nE-mail = %s \nSenha = %s \nNome completo = %s \nNúmero de telemóvel = %d \nNIF = %d", usuario, email, senha, name, telemovel, nif);
+        return String.format(
+                "Usuario = %s \nE-mail = %s \nSenha = %s \nNome completo = %s \nNúmero de telemóvel = %d \nNIF = %d",
+                getUsuario(), getEmail(), getSenha(), getName(), telemovel, nif);
     }
 
     @Override
     public void adcionarAoCarrinho() {
-
+        // TODO: Implementar funcionalidade
     }
 
     @Override
     public void realizarCompra() {
-
+        // TODO: Implementar funcionalidade
     }
 
-    // metodo para alterar o usuario
     @Override
     public void alterarUsuario(String novoUsuario) {
         if (novoUsuario != null && !novoUsuario.isEmpty()) {
-            this.usuario = novoUsuario;
+            setUsuario(novoUsuario);
             System.out.println("Nome de usuario alterado com sucesso!");
         } else {
             System.out.println("Nome de usuario inválido!");
@@ -61,7 +62,7 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public void alterarEmail(String novoEmail) {
         if (novoEmail != null && novoEmail.contains("@")) {
-            this.email = novoEmail;
+            setEmail(novoEmail);
             System.out.println("E-mail alterado com sucesso!");
         } else {
             System.out.println("E-mail inválido.");
@@ -71,7 +72,7 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public void alterarNome(String novoNome) {
         if (novoNome != null && !novoNome.isEmpty()) {
-            this.name = novoNome;
+            setName(novoNome);
             System.out.println("Nome alterado com sucesso!");
         } else {
             System.out.println("Nome inválido.");
@@ -80,8 +81,8 @@ public class Cliente extends Usuario implements AcoesCliente {
 
     @Override
     public void alterarSenha(String senhaAtual, String novaSenha) {
-        if (this.senha.equals(senhaAtual)) {
-            this.senha = novaSenha;
+        if (getSenha().equals(senhaAtual)) {
+            setSenha(novaSenha);
             System.out.println("Senha alterada com sucesso!");
         } else {
             System.out.println("A senha atual está incorreta.");
@@ -91,11 +92,11 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public void alterarNumero(int novoNumero) {
         if (novoNumero > 0) {
-            this.telemovel = novoNumero;
+            setTelemovel(novoNumero);
             System.out.println("Número de telefone alterado com sucesso!");
         } else {
             System.out.println("Número inválido! O número deve ser maior que 0.");
         }
     }
-
 }
+
