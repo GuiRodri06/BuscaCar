@@ -1,52 +1,57 @@
 package model.servicos;
 
-import model.entities.contas.Administrador;
-import model.entities.contas.Cliente;
 import model.entities.contas.Usuario;
 
 import java.util.Scanner;
 
 public class AutenticacaoLogin {
 
-    // Campo estático para armazenar o usuário logado
     public static Usuario userLogado;
 
-    /* Método para fazer login */
     public static void login() {
-        Scanner txt = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        UsuarioDAO dao = new UsuarioDAO();
 
         System.out.println("========== LOGIN ==========");
 
-        System.out.print("Insira seu nome de usuário: ");
-        String nomeUsuario = txt.nextLine().trim(); // .trim serve para eliminar os espacos desnecessarios
+        System.out.print("Email: ");
+        String email = scanner.nextLine().trim();
 
-        System.out.print("Insira seu email: ");
-        String email = txt.nextLine().trim();
+        System.out.print("Senha: ");
+        String senha = scanner.nextLine().trim();
 
-        System.out.print("Insira sua senha: ");
-        String senha = txt.nextLine().trim();
+        if (dao.login(email, senha)) {
+            userLogado = dao.buscarPorEmail(email);
+            if (userLogado != null) {
+                System.out.printf("Login bem-sucedido! Seja bem-vindo, %s [%s]%n",
+                        userLogado.getName(), userLogado.getTipo());
+            } else {
+                System.out.println("Erro ao buscar usuário logado.");
+            }
+        } else {
+            System.out.println("Usuário não encontrado. Deseja criar uma conta? (s/n)");
+            String resp = scanner.nextLine().trim();
 
-        // Autenticação do administrador (usuário fixo)
-        if (nomeUsuario.equals("adm") && email.equals("adm@gmail.com") && senha.equals("adm123")) {
-            System.out.println("Seja bem-vindo, Administrador!");
+            if (resp.equalsIgnoreCase("s")) {
 
-            userLogado = new Administrador("Administrador", nomeUsuario, senha, email);
-        }
-        // Autenticação do cliente
-        else {
-            System.out.println("Seja bem-vindo ao BuscaCar! Complete seu cadastro:");
+                System.out.print("Nome completo: ");
+                String nome = scanner.nextLine();
 
-            System.out.print("Insira seu nome completo: ");
-            String nome = txt.nextLine();
+                System.out.println("Número de NIF:");
+                int nif = scanner.nextInt();
 
-            System.out.print("Insira seu NIF: ");
-            int nif = Integer.parseInt(txt.nextLine()); // Melhor que nextInt() para evitar bugs
+                System.out.println("Número de Telemóvel:");
+                int telemovel = scanner.nextInt();
 
-            System.out.print("Insira seu número de telemóvel: ");
-            int telemovel = Integer.parseInt(txt.nextLine());
-
-            userLogado = new Cliente(nome, nomeUsuario, senha, email, nif, telemovel);
+                if (dao.criarConta(nome, email, senha, "admin", nif, telemovel)) {
+                    System.out.println("Conta criada com sucesso!");
+                } else {
+                    System.out.println("Erro ao criar conta.");
+                }
+            } else {
+                System.out.println("Encerrando o sistema.");
+                System.exit(0);
+            }
         }
     }
-
 }
