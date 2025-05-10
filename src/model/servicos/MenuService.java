@@ -57,11 +57,13 @@ public class MenuService {
                     break;
                 case 4:
                     System.out.print("Informe o ID do carro a ser deletado: ");
+                    txt.nextLine();
                     int idCar = Integer.parseInt(txt.nextLine());
                     daocar.deletarCarroPorId(idCar);
                     break;
                 case 5:
                     System.out.print("Digite o ID do usuário que deseja deletar: ");
+                    txt.nextLine();
                     int idUser = Integer.parseInt(txt.nextLine());
                     daouser.deletarUsuarioPorId(idUser);
                     break;
