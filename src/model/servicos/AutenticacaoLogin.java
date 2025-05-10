@@ -37,10 +37,10 @@ public class AutenticacaoLogin {
                 System.out.print("Nome completo: ");
                 String nome = scanner.nextLine();
 
-                System.out.println("Número de NIF:");
+                System.out.print("Número de NIF: ");
                 int nif = scanner.nextInt();
 
-                System.out.println("Número de Telemóvel:");
+                System.out.print("Número de Telemóvel: ");
                 int telemovel = scanner.nextInt();
 
                 if (dao.criarConta(nome, email, senha, "cliente", nif, telemovel)) {
