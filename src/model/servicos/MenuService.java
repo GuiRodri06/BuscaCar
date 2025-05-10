@@ -80,7 +80,8 @@ public class MenuService {
     public static void mostrarMenuCliente() {
 
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do user e o objeto que foi instanciado
-
+        CarroDAO daocar = new CarroDAO();
+        
         while (true) {
             System.out.println("\n========== MENU ==========");
             System.out.println();
@@ -96,7 +97,7 @@ public class MenuService {
             System.out.println("==============================");
             switch (i) {
                 case 1:
-                    System.out.println("Tem que implementar a lista de carros");
+                    daocar.listarTodosCarros();
                     break;
                 case 2:
                     System.out.println("Informacões sobre a conta:");
