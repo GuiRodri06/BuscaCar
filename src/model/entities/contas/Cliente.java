@@ -10,8 +10,8 @@ public class Cliente extends Usuario implements AcoesCliente {
     public Cliente() {
     }
 
-    public Cliente(String name, String usuario, String senha, String email, Integer nif, Integer telemovel) {
-        super(name, usuario, senha, email);
+    public Cliente(String name, String senha, String email, Integer nif, Integer telemovel) {
+        super(name, senha, email);
         this.nif = nif;
         this.telemovel = telemovel;
     }
@@ -35,8 +35,8 @@ public class Cliente extends Usuario implements AcoesCliente {
     @Override
     public String acessarConta() {
         return String.format(
-                "Usuario = %s \nE-mail = %s \nSenha = %s \nNome completo = %s \nNúmero de telemóvel = %d \nNIF = %d",
-                getUsuario(), getEmail(), getSenha(), getName(), telemovel, nif);
+                "E-mail = %s \nSenha = %s \nNome completo = %s \nNúmero de telemóvel = %d \nNIF = %d",
+                 getEmail(), getSenha(), getName(), getTelemovel(), getNif());
     }
 
     @Override
@@ -49,15 +49,6 @@ public class Cliente extends Usuario implements AcoesCliente {
         // TODO: Implementar funcionalidade
     }
 
-    @Override
-    public void alterarUsuario(String novoUsuario) {
-        if (novoUsuario != null && !novoUsuario.isEmpty()) {
-            setUsuario(novoUsuario);
-            System.out.println("Nome de usuario alterado com sucesso!");
-        } else {
-            System.out.println("Nome de usuario inválido!");
-        }
-    }
 
     @Override
     public void alterarEmail(String novoEmail) {

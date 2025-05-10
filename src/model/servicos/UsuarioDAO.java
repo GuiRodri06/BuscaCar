@@ -77,21 +77,20 @@ public class UsuarioDAO {
         try (Connection conn = conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, email);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    String tipo = rs.getString("tipo");
-                    Usuario user;
-                    if ("admin".equalsIgnoreCase(tipo)) {
-                        user = new Administrador();
-                    } else {
-                        user = new Cliente();
-                    }
-                    user.setId(rs.getInt("id"));
-                    user.setName(rs.getString("nome"));
-                    user.setEmail(rs.getString("email"));
-                    user.setSenha(rs.getString("senha"));
-                    user.setTipo(tipo);
-                    return user;
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String tipo = rs.getString("tipo");
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+                int nif = rs.getInt("nif");
+                int telemovel = rs.getInt("telemovel");
+
+                if ("cliente".equalsIgnoreCase(tipo)) {
+                    Cliente cliente = new Cliente(nome,  senha, email, nif, telemovel);
+                    return cliente;
+                } else if ("admin".equalsIgnoreCase(tipo)) {
+                    return new Administrador(nome, senha, email);
                 }
             }
         } catch (SQLException e) {

@@ -29,7 +29,6 @@ public class MenuAlterar {
             System.out.println("==============================");
 
             switch (i) {
-                case 1 -> alterarUsuario(cliente);
                 case 2 -> alterarSenha(cliente);
                 case 3 -> alterarEmail(cliente);
                 case 4 -> alterarNome(cliente);
@@ -42,12 +41,6 @@ public class MenuAlterar {
 
     // ================= MÉTODOS DE ALTERAÇÃO =================
 
-    private static void alterarUsuario(Cliente cliente) {
-        System.out.println("\n=== Alteração de Usuário ===");
-        System.out.print("Digite o novo nome de usuário: ");
-        String novoUsuario = txt.nextLine().trim();
-        cliente.alterarUsuario(novoUsuario);
-    }
 
     private static void alterarSenha(Cliente cliente) {
         System.out.println("\n=== Alteração de Senha ===");
