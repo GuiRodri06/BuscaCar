@@ -2,139 +2,111 @@ package model.entities.carros;
 
 public class carrosCondi {
 
+    /* ---------- atributos ---------- */
     private String modelo;
     private String submodelo;
     private int km;
     private int ano;
     private String conbustivel;
-    private int preço;
-    
+    private int preçoCompra;          // mantive o nome original
+    private double tarifaHoraBase;
 
-    public carrosCondi(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
-        this.modelo = modelo;
-        this.submodelo = submodelo;
-        this.km = km;
-        this.ano = ano;
-        this.conbustivel = conbustivel;
-        this.preço = preço;
-        
-    
-        }
-    
-    public String getModelo() {
-        return modelo;
+    /* ---------- construtor ---------- */
+    public carrosCondi(String modelo, String submodelo, int km,
+                       int ano, String conbustivel, int preçoCompra) {
+        this.modelo       = modelo;
+        this.submodelo    = submodelo;
+        this.km           = km;
+        this.ano          = ano;
+        this.conbustivel  = conbustivel;
+        this.preçoCompra  = preçoCompra;
+
+        /* conversão compra → hora */
+        this.tarifaHoraBase = preçoCompra * 0.0005;
     }
 
-    public void setModelo(String name) {
-        this.modelo = name;
-    }
+    /* ---------- getters / setters originais ---------- */
+    public String getModelo()               { return modelo; }
+    public void   setModelo(String name)    { this.modelo = name; }
 
-    public String getSubmodelo() {
-        return submodelo;
-    }
+    public String getSubmodelo()            { return submodelo; }
+    public void   setSubmodelo(String sm)   { this.submodelo = sm; }
 
-    public void setSubmodelo(String submodelo) {
-        this.submodelo = submodelo;
-    }
+    public int  getKm()                     { return km; }
+    public void setKm(int km)               { this.km = km; }
 
-    public int getKm() {
-        return km;
-    }
+    public int  getAno()                    { return ano; }
+    public void setAno(int ano)             { this.ano = ano; }
 
-    public void setKm(int km) {
-        this.km = km;
-    }
+    public String getConbustivel()          { return conbustivel; }
+    public void   setConbustivel(String c)  { this.conbustivel = c; }
 
-    public int getAno() {
-        return ano;
-    }
+    public int  getPreço()                  { return preçoCompra; }
+    public void setPreço(int p)             { this.preçoCompra = p; }
 
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
+    public double getTarifaHoraBase()       { return tarifaHoraBase; }
 
-    public String getConbustivel() {
-        return conbustivel;
-    }
+    /* ---------- regras de preço (agora atuam em tarifaHoraBase) ---------- */
 
-    public void setConbustivel(String conbustivel) {
-        this.conbustivel = conbustivel;
-    }
-
-    public int getPreço() {
-        return preço;
-    }
-
-    public void setPreço(int preço) {
-        this.preço = preço;
-    }
-
-
-
-    //para carros com mais 100'000 km, o preço é reduzido em 25%
+    // >100 000 km  ⇒  –25 %
     public void calcularPrecoKm100000(int km) {
-        if (km > 100000) {
-            preço = (int) (preço / 1.25); 
-            
+        if (km > 100_000) {
+            tarifaHoraBase *= 0.75;   // sem cast, mantém centavos
         }
     }
 
-
-    //para carros com mais de 10 anos, o preço é reduzido em 10%
-    public void calcularPrecoAno10(int ano) {
-        if (ano > 10) {
-            preço = (int) (preço / 1.10); 
-            
+    // >10 anos  ⇒  –10 %
+    public void calcularPrecoAno2015(int ano) {
+        if (ano > 2015) {
+            tarifaHoraBase *= 0.90;
         }
     }
 
-    //para carros electricos, o preço é reduzido em 20%
+    // elétrico  ⇒  –20 %
     public void calcularPrecoEletrico(String conbustivel) {
         if (conbustivel.equalsIgnoreCase("eletrico")) {
-            preço = (int) (preço / 1.20); 
-            
+            tarifaHoraBase *= 0.80;
         }
     }
 
-    //para carros Hybridos, o preço é reduzido em 10%
+    // híbrido  ⇒  –10 %
     public void calcularPrecoHybrido(String conbustivel) {
         if (conbustivel.equalsIgnoreCase("hybrido")) {
-            preço = (int) (preço / 1.10); 
-            
+            tarifaHoraBase *= 0.90;
         }
     }
 
-
-    //para clientes com menos de 25 anos, o preço é aumentado em 15%
+    // motorista <25 anos  ⇒  +15 %
     public void calcularPrecoPorIdadeMotorista(int idadeMotorista) {
         if (idadeMotorista < 25) {
-            preço = (int) (preço * 1.15);
+            tarifaHoraBase *= 1.15;
         }
     }
 
-    //para carros de marcas Rolls-Royce, Porsche e Lamborghini, o preço é aumentado em 20%
+    // marcas “caras”  ⇒  +20 %
     public void calcularPrecoPorMarcaCara(String marca) {
-        // Comparação ignorando maiúsculas/minúsculas
-        marca = marca.toLowerCase();
-        if (marca.equals("Rolls-Royce") || marca.equals("Porsche") || marca.equals("Lamborghini")) {
-            preço *= 1.20; // +20%
+        String m = marca.toLowerCase();                 // normaliza
+        if (m.equals("rolls-royce") || m.equals("porsche")
+            || m.equals("lamborghini") || m.equals("audi")) {
+            tarifaHoraBase *= 1.20;
         }
     }
 
-    //para carros de marcas Fiat, Renault, Citroen, Peugeot, Opel, Kia e Dacia, o preço é reduzido em 20%
+    // marcas “econômicas”  ⇒  –20 %
     public void calcularPreçoMarcasBaixas(String marca) {
-        // Comparação ignorando maiúsculas/minúsculas
-        marca = marca.toLowerCase();
-        if (marca.equals("Fiat") || marca.equals("Renault") || marca.equals("Citroen") 
-        || marca.equals("Peugeot") || marca.equals("Opel") || marca.equals("Kia") || marca.equals("Dacia") ) {
-            preço *= 0.80; // -20%
+        String m = marca.toLowerCase();
+        if (m.equals("fiat") || m.equals("renault") || m.equals("citroen")
+            || m.equals("peugeot") || m.equals("opel") || m.equals("kia")
+            || m.equals("dacia")) {
+            tarifaHoraBase *= 0.80;
         }
     }
-
-
-    
-
-
-
-    
 }
+
+
+    
+
+
+
+    
+
