@@ -2,8 +2,8 @@ package model.entities.carros;
 
 public class Mini extends carrosCondi {
 
-    public Mini(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
-        super(modelo, submodelo, km, ano, conbustivel, preço, cor);
+    public Mini(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra, String cor) {
+        super(modelo, submodelo, km, ano, conbustivel, preçoCompra);
     }
 
     @Override

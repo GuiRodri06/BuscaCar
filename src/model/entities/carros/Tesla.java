@@ -2,8 +2,8 @@ package model.entities.carros;
 
 public class Tesla extends carrosCondi {
 
-    public Tesla(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
-        super(modelo, submodelo, km, ano, conbustivel, preço, cor);
+    public Tesla(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra, String cor) {
+        super(modelo, submodelo, km, ano, conbustivel, preçoCompra);
     }
 
     @Override

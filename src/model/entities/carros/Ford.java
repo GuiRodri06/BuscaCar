@@ -2,8 +2,8 @@ package model.entities.carros;
 
 public class Ford extends carrosCondi {
 
-    public Ford(String modelo, String submodelo, int km, int ano, String conbustivel, int preço, String cor) {
-        super(modelo, submodelo, km, ano, conbustivel, preço, cor);
+    public Ford(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra, String cor) {
+        super(modelo, submodelo, km, ano, conbustivel, preçoCompra);
     }
 
     @Override
