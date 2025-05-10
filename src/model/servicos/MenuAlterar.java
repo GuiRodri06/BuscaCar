@@ -15,12 +15,11 @@ public class MenuAlterar {
 
         while (i != 6) {
             System.out.println("\n==== MENU DE ALTERACAO ====");
-            System.out.println("[1] - Alterar nome de usuário");
-            System.out.println("[2] - Alterar a senha");
-            System.out.println("[3] - Alterar e-mail");
-            System.out.println("[4] - Alterar nome");
+            System.out.println("[1] - Alterar a senha");
+            System.out.println("[2] - Alterar e-mail");
+            System.out.println("[3] - Alterar nome");
             System.out.println("[4] - Alterar o número de telemóvel");
-            System.out.println("[6] - Sair");
+            System.out.println("[5] - Sair");
 
             System.out.print("\nEscolha o que você vai querer alterar: ");
             i = txt.nextInt();
@@ -29,12 +28,11 @@ public class MenuAlterar {
             System.out.println("==============================");
 
             switch (i) {
-                case 1 -> alterarUsuario(cliente);
-                case 2 -> alterarSenha(cliente);
-                case 3 -> alterarEmail(cliente);
-                case 4 -> alterarNome(cliente);
-                case 5 -> alterarNumero(cliente);
-                case 6 -> System.out.println("Saindo do menu de alteração...");
+                case 1 -> alterarSenha(cliente);
+                case 2 -> alterarEmail(cliente);
+                case 3 -> alterarNome(cliente);
+                case 4 -> alterarNumero(cliente);
+                case 5 -> System.out.println("Saindo do menu de alteração...");
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
@@ -42,12 +40,6 @@ public class MenuAlterar {
 
     // ================= MÉTODOS DE ALTERAÇÃO =================
 
-    private static void alterarUsuario(Cliente cliente) {
-        System.out.println("\n=== Alteração de Usuário ===");
-        System.out.print("Digite o novo nome de usuário: ");
-        String novoUsuario = txt.nextLine().trim();
-        cliente.alterarUsuario(novoUsuario);
-    }
 
     private static void alterarSenha(Cliente cliente) {
         System.out.println("\n=== Alteração de Senha ===");

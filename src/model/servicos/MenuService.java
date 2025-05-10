@@ -25,16 +25,19 @@ public class MenuService {
     public static void mostrarMenuAdmin() {
 
         Administrador administrador = (Administrador) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do adm e o objeto que foi instanciado
+        CarroDAO daocar = new CarroDAO();
+        UsuarioDAO daouser = new UsuarioDAO();
 
         while (true) {
             System.out.println();
             System.out.println("===== MENU ADMINISTRADOR =====");
             System.out.println();
             System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
-            System.out.println("[2] - Acessar a conta");
-            System.out.println("[3] - Cadastrar um novo carro");
-            System.out.println("[4] - Ver relatórios finaceiros");
-            System.out.println("[5] - Sair");
+            System.out.println("[2] - Lista de usuários cadastrados");
+            System.out.println("[3] - Adcionar um novo carro");
+            System.out.println("[4] - Deletar um carro");
+            System.out.println("[5] - Deletar um usuario");
+            System.out.println("[6] - Sair");
 
             System.out.println();
             System.out.print("Qual área voce vai querer: ");
@@ -44,20 +47,27 @@ public class MenuService {
 
             switch (i) {
                 case 1:
-                    System.out.println("Tem que implementar a lista de carros");
+                    daocar.listarTodosCarros();
                     break;
                 case 2:
-                    System.out.println("Informacões sobre a conta do administrador:");
-                    System.out.println();
-                    System.out.println(administrador.acessarConta());
+                    daouser.listarUsuariosClientes();
                     break;
                 case 3:
                     CadastroCarroService.executarCadastro();
                     break;
                 case 4:
-                    System.out.println("Tem que implementar um relatorio financeiro");
+                    System.out.print("Informe o ID do carro a ser deletado: ");
+                    txt.nextLine();
+                    int idCar = Integer.parseInt(txt.nextLine());
+                    daocar.deletarCarroPorId(idCar);
                     break;
                 case 5:
+                    System.out.print("Digite o ID do usuário que deseja deletar: ");
+                    txt.nextLine();
+                    int idUser = Integer.parseInt(txt.nextLine());
+                    daouser.deletarUsuarioPorId(idUser);
+                    break;
+                case 6:
                     System.out.println("Saindo da aplicação... Até logo!");
                     System.exit(0); // Encerra a aplicação
                     break;
@@ -70,6 +80,7 @@ public class MenuService {
     public static void mostrarMenuCliente() {
 
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do user e o objeto que foi instanciado
+        CarroDAO daocar = new CarroDAO();
 
         while (true) {
             System.out.println("\n========== MENU ==========");
@@ -86,7 +97,7 @@ public class MenuService {
             System.out.println("==============================");
             switch (i) {
                 case 1:
-                    System.out.println("Tem que implementar a lista de carros");
+                    daocar.listarTodosCarros();
                     break;
                 case 2:
                     System.out.println("Informacões sobre a conta:");
