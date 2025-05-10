@@ -26,6 +26,7 @@ public class MenuService {
 
         Administrador administrador = (Administrador) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do adm e o objeto que foi instanciado
         CarroDAO daocar = new CarroDAO();
+        UsuarioDAO daouser = new UsuarioDAO();
 
         while (true) {
             System.out.println();
@@ -49,20 +50,20 @@ public class MenuService {
                     daocar.listarTodosCarros();
                     break;
                 case 2:
-                    UsuarioDAO dao = new UsuarioDAO();
-                    dao.listarUsuariosClientes();
+                    daouser.listarUsuariosClientes();
                     break;
                 case 3:
                     CadastroCarroService.executarCadastro();
                     break;
                 case 4:
-                    Scanner sc = new Scanner(System.in);
                     System.out.print("Informe o ID do carro a ser deletado: ");
-                    int id = Integer.parseInt(sc.nextLine());
-                    daocar.deletarCarroPorId(id);
+                    int idCar = Integer.parseInt(txt.nextLine());
+                    daocar.deletarCarroPorId(idCar);
                     break;
                 case 5:
-                    System.out.println("");
+                    System.out.print("Digite o ID do usuário que deseja deletar: ");
+                    int idUser = Integer.parseInt(txt.nextLine());
+                    daouser.deletarUsuarioPorId(idUser);
                     break;
                 case 6:
                     System.out.println("Saindo da aplicação... Até logo!");

@@ -5,6 +5,7 @@ import model.entities.contas.Administrador;
 import model.entities.contas.Usuario;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class UsuarioDAO {
 
@@ -101,25 +102,26 @@ public class UsuarioDAO {
 
     public void listarUsuariosClientes() {
         String sql = """
-        SELECT nome, email, nif, telemovel
+        SELECT id, nome, email, nif, telemovel
         FROM usuarios
         WHERE tipo = 'cliente'
         ORDER BY nome;
-        """;
+    """;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:db/sistema.db");
+        try (Connection conn = conectar();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            System.out.println("========== USUÁRIOS CADASTRADOS ==========");
+            System.out.println("========== USUÁRIOS CLIENTES ==========");
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String email = rs.getString("email");
                 int nif = rs.getInt("nif");
                 int telemovel = rs.getInt("telemovel");
 
-                System.out.printf("Nome: %-20s | Email: %-25s | NIF: %d | Telemóvel: %d%n",
-                        nome, email, nif, telemovel);
+                System.out.printf("ID: %-3d | Nome: %-20s | Email: %-25s | NIF: %-9d | Telemóvel: %d%n",
+                        id, nome, email, nif, telemovel);
             }
 
         } catch (SQLException e) {
@@ -128,20 +130,50 @@ public class UsuarioDAO {
     }
 
 
-    public void deletarUsuario(int id) {
-        String sql = "DELETE FROM usuarios WHERE id = ?";
-        try (Connection conn = conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            int linhasAfetadas = stmt.executeUpdate();
-            if (linhasAfetadas > 0) {
-                System.out.println("Usuário excluído com sucesso.");
+    public void deletarUsuarioPorId(int id) {
+        String verificaSql = "SELECT nome, tipo FROM usuarios WHERE id = ?";
+        String deletarSql = "DELETE FROM usuarios WHERE id = ?";
+
+        try (Connection conn = conectar()) {
+            PreparedStatement stmtVerifica = conn.prepareStatement(verificaSql);
+            stmtVerifica.setInt(1, id);
+            ResultSet rs = stmtVerifica.executeQuery();
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String tipo = rs.getString("tipo");
+
+                if (tipo.equals("admin")) {
+                    System.out.println("Não é permitido deletar a conta do administrador.");
+                    return;
+                }
+
+                System.out.printf("Usuário encontrado: %s (ID: %d)%n", nome, id);
+                System.out.print("Deseja realmente deletar? (s/n): ");
+                Scanner sc = new Scanner(System.in);
+                String resp = sc.nextLine().trim().toLowerCase();
+
+                if (resp.equals("s")) {
+                    PreparedStatement stmtDel = conn.prepareStatement(deletarSql);
+                    stmtDel.setInt(1, id);
+                    int linhas = stmtDel.executeUpdate();
+
+                    if (linhas > 0) {
+                        System.out.println("Usuário deletado com sucesso.");
+                    } else {
+                        System.out.println("Erro ao deletar o usuário.");
+                    }
+                } else {
+                    System.out.println("Operação cancelada.");
+                }
             } else {
-                System.out.println("Usuário não encontrado.");
+                System.out.println("Usuário com ID " + id + " não encontrado.");
             }
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Erro ao deletar usuário: " + e.getMessage());
         }
     }
+
 }
 
