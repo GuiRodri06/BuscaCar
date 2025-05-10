@@ -25,6 +25,7 @@ public class MenuService {
     public static void mostrarMenuAdmin() {
 
         Administrador administrador = (Administrador) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do adm e o objeto que foi instanciado
+        CarroDAO daocar = new CarroDAO();
 
         while (true) {
             System.out.println();
@@ -45,7 +46,6 @@ public class MenuService {
 
             switch (i) {
                 case 1:
-                    CarroDAO daocar = new CarroDAO();
                     daocar.listarTodosCarros();
                     break;
                 case 2:
@@ -56,7 +56,10 @@ public class MenuService {
                     CadastroCarroService.executarCadastro();
                     break;
                 case 4:
-                    System.out.println("Tem que implementar um relatorio financeiro");
+                    Scanner sc = new Scanner(System.in);
+                    System.out.print("Informe o ID do carro a ser deletado: ");
+                    int id = Integer.parseInt(sc.nextLine());
+                    daocar.deletarCarroPorId(id);
                     break;
                 case 5:
                     System.out.println("");
