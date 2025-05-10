@@ -2,7 +2,7 @@ package model.entities.carros;
 
 public class Citroen extends carrosCondi {
 
-    public Citroen(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra, String cor) {
+    public Citroen(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra) {
         super(modelo, submodelo, km, ano, conbustivel, preçoCompra);
     }
 

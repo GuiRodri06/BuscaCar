@@ -2,7 +2,7 @@ package model.entities.carros;
 
 public class AlfaRomeo extends carrosCondi {
 
-    public AlfaRomeo(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra, String cor) {
+    public AlfaRomeo(String modelo, String submodelo, int km, int ano, String conbustivel, int preçoCompra) {
         super(modelo, submodelo, km, ano, conbustivel, preçoCompra);
     }
 
