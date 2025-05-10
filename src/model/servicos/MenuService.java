@@ -44,7 +44,8 @@ public class MenuService {
 
             switch (i) {
                 case 1:
-                    System.out.println("Tem que implementar a lista de carros");
+                    CarroDAO daocar = new CarroDAO();
+                    daocar.listarTodosCarros();
                     break;
                 case 2:
                     System.out.println("Informacões sobre a conta do administrador:");

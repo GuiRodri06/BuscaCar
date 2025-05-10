@@ -65,4 +65,37 @@ public class CarroDAO {
             e.printStackTrace();
         }
     }
+
+    public void listarTodosCarros() {
+        String sql = """
+        SELECT 
+            m.nome AS marca, 
+            mo.nome AS modelo, 
+            c.ano, 
+            c.preco
+        FROM carro c
+        JOIN modelos mo ON c.id_modelo = mo.id
+        JOIN marcas m ON mo.id_marca = m.id
+        ORDER BY m.nome, mo.nome, c.ano;
+        """;
+
+        try (Connection conn = conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            System.out.println("=========== CARROS DISPONÍVEIS ===========");
+            while (rs.next()) {
+                String marca = rs.getString("marca");
+                String modelo = rs.getString("modelo");
+                int ano = rs.getInt("ano");
+                double preco = rs.getDouble("preco");
+
+                System.out.printf("Marca: %-10s | Modelo: %-12s | Ano: %d | Preço: %.2f €%n",
+                        marca, modelo, ano, preco);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar carros: " + e.getMessage());
+        }
+    }
 }
