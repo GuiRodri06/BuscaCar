@@ -31,8 +31,8 @@ public class MenuService {
             System.out.println("===== MENU ADMINISTRADOR =====");
             System.out.println();
             System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
-            System.out.println("[2] - Acessar a conta");
-            System.out.println("[3] - Cadastrar um novo carro");
+            System.out.println("[2] - Lista de usuários cadastrados");
+            System.out.println("[3] - Adcionar um novo carro");
             System.out.println("[4] - Ver relatórios finaceiros");
             System.out.println("[5] - Sair");
 
@@ -48,9 +48,8 @@ public class MenuService {
                     daocar.listarTodosCarros();
                     break;
                 case 2:
-                    System.out.println("Informacões sobre a conta do administrador:");
-                    System.out.println();
-                    System.out.println(administrador.acessarConta());
+                    UsuarioDAO dao = new UsuarioDAO();
+                    dao.listarUsuariosClientes();
                     break;
                 case 3:
                     CadastroCarroService.executarCadastro();

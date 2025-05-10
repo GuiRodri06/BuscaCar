@@ -99,23 +99,35 @@ public class UsuarioDAO {
         return null;
     }
 
-    public void listarUsuarios() {
-        String sql = "SELECT id, nome, email, tipo FROM usuarios";
-        try (Connection conn = conectar();
+    public void listarUsuariosClientes() {
+        String sql = """
+        SELECT nome, email, usuario, nif, telemovel
+        FROM usuarios
+        WHERE tipo = 'cliente'
+        ORDER BY nome;
+        """;
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:db/sistema.db");
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            System.out.println("---- Lista de Usuários ----");
+            System.out.println("========== USUÁRIOS CADASTRADOS ==========");
             while (rs.next()) {
-                System.out.printf("ID: %d | Nome: %s | Email: %s | Tipo: %s%n",
-                        rs.getInt("id"), rs.getString("nome"),
-                        rs.getString("email"), rs.getString("tipo"));
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                String usuario = rs.getString("usuario");
+                int nif = rs.getInt("nif");
+                int telemovel = rs.getInt("telemovel");
+
+                System.out.printf("Nome: %-20s | Usuário: %-10s | Email: %-25s | NIF: %d | Telemóvel: %d%n",
+                        nome, usuario, email, nif, telemovel);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Erro ao listar usuários: " + e.getMessage());
         }
     }
+
 
     public void deletarUsuario(int id) {
         String sql = "DELETE FROM usuarios WHERE id = ?";
