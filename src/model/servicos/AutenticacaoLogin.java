@@ -43,7 +43,7 @@ public class AutenticacaoLogin {
                 System.out.println("Número de Telemóvel:");
                 int telemovel = scanner.nextInt();
 
-                if (dao.criarConta(nome, email, senha, "admin", nif, telemovel)) {
+                if (dao.criarConta(nome, email, senha, "cliente", nif, telemovel)) {
                     System.out.println("Conta criada com sucesso!");
                 } else {
                     System.out.println("Erro ao criar conta.");

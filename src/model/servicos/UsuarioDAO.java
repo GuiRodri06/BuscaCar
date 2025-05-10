@@ -101,7 +101,7 @@ public class UsuarioDAO {
 
     public void listarUsuariosClientes() {
         String sql = """
-        SELECT nome, email, usuario, nif, telemovel
+        SELECT nome, email, nif, telemovel
         FROM usuarios
         WHERE tipo = 'cliente'
         ORDER BY nome;
@@ -115,12 +115,11 @@ public class UsuarioDAO {
             while (rs.next()) {
                 String nome = rs.getString("nome");
                 String email = rs.getString("email");
-                String usuario = rs.getString("usuario");
                 int nif = rs.getInt("nif");
                 int telemovel = rs.getInt("telemovel");
 
-                System.out.printf("Nome: %-20s | Usuário: %-10s | Email: %-25s | NIF: %d | Telemóvel: %d%n",
-                        nome, usuario, email, nif, telemovel);
+                System.out.printf("Nome: %-20s | Email: %-25s | NIF: %d | Telemóvel: %d%n",
+                        nome, email, nif, telemovel);
             }
 
         } catch (SQLException e) {
