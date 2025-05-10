@@ -54,6 +54,8 @@ public class BancoSQLite {
             id_modelo INTEGER NOT NULL,
             ano INTEGER NOT NULL,
             preco REAL NOT NULL,
+            km INTEGER NOT NULL,
+            combustivel TEXT NOT NULL,
             FOREIGN KEY (id_modelo) REFERENCES modelos(id)
         );
         """;

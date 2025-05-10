@@ -53,13 +53,15 @@ public class CarroDAO {
         return -1;
     }
 
-    public void cadastrarCarro(int idModelo, int ano, double preco) {
-        String sql = "INSERT INTO carro(id_modelo, ano, preco) VALUES (?, ?, ?)";
+    public void cadastrarCarro(int idModelo, int ano, double preco, int km, String combustivel) {
+        String sql = "INSERT INTO carro(id_modelo, ano, preco, km, combustivel) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, idModelo);
             stmt.setInt(2, ano);
             stmt.setDouble(3, preco);
+            stmt.setInt(4, km);
+            stmt.setString(5, combustivel);
             stmt.executeUpdate();
             System.out.println("Carro cadastrado com sucesso!");
         } catch (SQLException e) {
@@ -74,7 +76,9 @@ public class CarroDAO {
             m.nome AS marca, 
             mo.nome AS modelo, 
             c.ano, 
-            c.preco
+            c.preco,
+            c.km,
+            c.combustivel
         FROM carro c
         JOIN modelos mo ON c.id_modelo = mo.id
         JOIN marcas m ON mo.id_marca = m.id
@@ -92,9 +96,10 @@ public class CarroDAO {
                 String modelo = rs.getString("modelo");
                 int ano = rs.getInt("ano");
                 double preco = rs.getDouble("preco");
-
-                System.out.printf("ID: %-3d | Marca: %-10s | Modelo: %-12s | Ano: %d | Preço: %.2f €%n",
-                        id, marca, modelo, ano, preco);
+                int km = rs.getInt("km");
+                String combustivel = rs.getString("combustivel");
+                System.out.printf("ID: %-3d | Marca: %-10s | Modelo: %-12s | Ano: %d | Preço: %.2f € | Km: %d | Combustível: %s%n",
+                        id, marca, modelo, ano, preco, km, combustivel);
             }
 
         } catch (SQLException e) {
