@@ -97,7 +97,7 @@ public class MenuService {
             System.out.println("==============================");
             switch (i) {
                 case 1:
-                    daocar.listarTodosCarros();
+                    daocar.imprimirCarrosCondicionados();
                     break;
                 case 2:
                     System.out.println("Informacões sobre a conta:");

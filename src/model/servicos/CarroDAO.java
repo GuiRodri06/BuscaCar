@@ -2,6 +2,9 @@ package model.servicos;
 
 import java.sql.*;
 import java.util.Scanner;
+import model.entities.carros.carrosCondi;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarroDAO {
 
@@ -152,4 +155,69 @@ public class CarroDAO {
             System.out.println("Erro ao deletar carro: " + e.getMessage());
         }
     }
+
+    public List<carrosCondi> listarCarrosComoObjetos() {
+        List<carrosCondi> lista = new ArrayList<>();
+
+        String sql = """
+        SELECT 
+            c.id,
+            m.nome AS marca, 
+            mo.nome AS modelo, 
+            c.ano, 
+            c.preco,
+            c.km,
+            c.combustivel
+        FROM carro c
+        JOIN modelos mo ON c.id_modelo = mo.id
+        JOIN marcas m ON mo.id_marca = m.id
+        ORDER BY m.nome, mo.nome, c.ano;
+    """;
+
+        try (Connection conn = conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String marca      = rs.getString("marca");
+                String modelo     = rs.getString("modelo");
+                int ano           = rs.getInt("ano");
+                int preco         = (int) rs.getDouble("preco");  // pode arredondar ou converter para int
+                int km            = rs.getInt("km");
+                String combustivel = rs.getString("combustivel");
+
+                carrosCondi carro = new carrosCondi(
+                        marca, modelo, km, ano, combustivel, preco
+                );
+
+                // aplica as regras de negócio
+                carro.calcularPrecoKm100000(km);
+                carro.calcularPrecoAno2015(ano);
+                carro.calcularPrecoEletrico(combustivel);
+                carro.calcularPrecoHybrido(combustivel);
+                carro.calcularPrecoPorMarcaCara(marca);
+                carro.calcularPreçoMarcasBaixas(marca);
+
+                lista.add(carro);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao obter carros: " + e.getMessage());
+        }
+
+        return lista;
+    }
+
+    public void imprimirCarrosCondicionados() {
+        List<carrosCondi> lista = listarCarrosComoObjetos();
+
+        System.out.println("======= CARROS COM TARIFA CALCULADA =======");
+
+        for (carrosCondi c : lista) {
+            System.out.printf("Modelo: %-10s | Submodelo: %-12s | Ano: %d | Km: %d | Combustível: %-9s | Tarifa €/h: %.2f%n",
+                    c.getModelo(), c.getSubmodelo(), c.getAno(), c.getKm(), c.getConbustivel(), c.getTarifaHoraBase());
+        }
+    }
+
+
 }
