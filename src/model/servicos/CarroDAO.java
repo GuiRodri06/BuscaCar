@@ -185,10 +185,10 @@ public class CarroDAO {
                 int preco         = (int) rs.getDouble("preco");  // pode arredondar ou converter para int
                 int km            = rs.getInt("km");
                 String combustivel = rs.getString("combustivel");
+                
 
                 carrosCondi carro = new carrosCondi(
-                        marca, modelo, km, ano, combustivel, preco
-                );
+                        marca, modelo, km, ano, combustivel, preco);
 
                 // aplica as regras de negócio
                 carro.calcularPrecoKm100000(km);
@@ -197,6 +197,8 @@ public class CarroDAO {
                 carro.calcularPrecoHybrido(combustivel);
                 carro.calcularPrecoPorMarcaCara(marca);
                 carro.calcularPreçoMarcasBaixas(marca);
+                carro.calcularPrecoDiesel(combustivel);
+                
 
                 lista.add(carro);
             }
@@ -214,8 +216,8 @@ public class CarroDAO {
         System.out.println("======= CARROS COM TARIFA CALCULADA =======");
 
         for (carrosCondi c : lista) {
-            System.out.printf("Modelo: %-10s | Submodelo: %-12s | Ano: %d | Km: %d | Combustível: %-9s | Tarifa €/h: %.2f%n",
-                    c.getModelo(), c.getSubmodelo(), c.getAno(), c.getKm(), c.getConbustivel(), c.getTarifaHoraBase());
+            System.out.printf("Modelo: %-10s | Submodelo: %-12s | Ano: %d | Km: %d | Combustível: %-9s | Tarifa €/dia: %.2f%n",
+                    c.getModelo(), c.getSubmodelo(), c.getAno(), c.getKm(), c.getConbustivel(), c.getTarifaDiaBase());
         }
     }
 
