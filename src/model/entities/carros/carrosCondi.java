@@ -95,7 +95,7 @@ public class carrosCondi {
     // marcas “econômicas”  ⇒  –20 %
     public void calcularPreçoMarcasBaixas(String marca) {
         String m = marca.toLowerCase();
-        if (m.equals("fiat") || m.equals("renault") || m.equals("citroen")
+        if (m.equals("fiat") || m.equals("renault") || m.equals("citroen")  
             || m.equals("peugeot") || m.equals("opel") || m.equals("kia")
             || m.equals("dacia")) {
             tarifaHoraBase *= 0.80;
