@@ -9,7 +9,8 @@ public class carrosCondi {
     private int ano;
     private String conbustivel;
     private int preçoCompra;          // mantive o nome original
-    private double tarifaHoraBase;
+    private double tarifaDiaBase;
+    
 
     /* ---------- construtor ---------- */
     public carrosCondi(String modelo, String submodelo, int km,
@@ -20,9 +21,10 @@ public class carrosCondi {
         this.ano          = ano;
         this.conbustivel  = conbustivel;
         this.preçoCompra  = preçoCompra;
+        
 
         /* conversão compra → hora */
-        this.tarifaHoraBase = preçoCompra * 0.0005;
+        this.tarifaDiaBase = preçoCompra * 0.002;
     }
 
     /* ---------- getters / setters originais ---------- */
@@ -44,63 +46,74 @@ public class carrosCondi {
     public int  getPreço()                  { return preçoCompra; }
     public void setPreço(int p)             { this.preçoCompra = p; }
 
-    public double getTarifaHoraBase()       { return tarifaHoraBase; }
+   
+
+
+
+    public double getTarifaDiaBase()       { return tarifaDiaBase; }
 
     /* ---------- regras de preço (agora atuam em tarifaHoraBase) ---------- */
 
     // >100 000 km  ⇒  –25 %
     public void calcularPrecoKm100000(int km) {
         if (km > 100_000) {
-            tarifaHoraBase *= 0.75;   // sem cast, mantém centavos
+            tarifaDiaBase *= 0.75;   // sem cast, mantém centavos
         }
     }
 
-    // >10 anos  ⇒  –10 %
+    // <10 anos  ⇒  –10 %
     public void calcularPrecoAno2015(int ano) {
-        if (ano > 2015) {
-            tarifaHoraBase *= 0.90;
+        if (ano < 2015) {
+            tarifaDiaBase *= 0.90;
         }
     }
 
     // elétrico  ⇒  –20 %
     public void calcularPrecoEletrico(String conbustivel) {
-        if (conbustivel.equalsIgnoreCase("eletrico")) {
-            tarifaHoraBase *= 0.80;
+        if (conbustivel.equalsIgnoreCase("Elétrico")) {
+            tarifaDiaBase *= 0.80;
         }
     }
 
     // híbrido  ⇒  –10 %
     public void calcularPrecoHybrido(String conbustivel) {
-        if (conbustivel.equalsIgnoreCase("hybrido")) {
-            tarifaHoraBase *= 0.90;
+        if (conbustivel.equalsIgnoreCase("Híbrido")) {
+            tarifaDiaBase *= 0.90;
         }
     }
 
-    // motorista <25 anos  ⇒  +15 %
-    public void calcularPrecoPorIdadeMotorista(int idadeMotorista) {
-        if (idadeMotorista < 25) {
-            tarifaHoraBase *= 1.15;
-        }
-    }
+    
 
     // marcas “caras”  ⇒  +20 %
     public void calcularPrecoPorMarcaCara(String marca) {
         String m = marca.toLowerCase();                 // normaliza
-        if (m.equals("rolls-royce") || m.equals("porsche")
-            || m.equals("lamborghini") || m.equals("audi")) {
-            tarifaHoraBase *= 1.20;
+        if (m.equals("Rolls-Royce") || m.equals("Porsche")
+            || m.equals("Lamborghini") || m.equals("Audi")) {
+                tarifaDiaBase *= 1.20;
         }
     }
 
     // marcas “econômicas”  ⇒  –20 %
     public void calcularPreçoMarcasBaixas(String marca) {
         String m = marca.toLowerCase();
-        if (m.equals("fiat") || m.equals("renault") || m.equals("citroen")  
-            || m.equals("peugeot") || m.equals("opel") || m.equals("kia")
-            || m.equals("dacia")) {
-            tarifaHoraBase *= 0.80;
+        if (m.equals("Fiat") || m.equals("Renault") || m.equals("Citroen")  
+            || m.equals("Peugeot") || m.equals("Opel") || m.equals("Kia")
+            || m.equals("Dacia")) {
+                tarifaDiaBase *= 0.80;
         }
     }
+    /** Diesel ⇒ +5 %  (em vários países o seguro/custo de manutenção é maior) */
+public void calcularPrecoDiesel(String combustivel) {
+    if (combustivel.equalsIgnoreCase("Diesel")) {
+        tarifaDiaBase *= 1.05;
+    }
+}
+
+public void calcularDescontoLongaDuracao(int dias) {
+    if (dias >= 14) {
+        tarifaDiaBase *= 0.85;
+    }
+}
 }
 
 
