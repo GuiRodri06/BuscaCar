@@ -3,6 +3,7 @@ package model.servicos;
 import model.entities.contas.Administrador;
 import model.entities.contas.Cliente;
 
+
 import java.util.Scanner;
 
 public class MenuService {
@@ -81,6 +82,7 @@ public class MenuService {
 
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do user e o objeto que foi instanciado
         CarroDAO daocar = new CarroDAO();
+        
 
         while (true) {
             System.out.println("\n========== MENU ==========");
