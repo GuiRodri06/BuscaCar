@@ -52,30 +52,30 @@ public class carrosCondi {
 
     public double getTarifaDiaBase()       { return tarifaDiaBase; }
 
-    /* ---------- regras de preço (agora atuam em tarifaHoraBase) ---------- */
+    /* ---------- regras de preço(agora atuam em tarifaHoraBase) ---------- */
 
-    // >100 000 km  ⇒  –25 %
+    // >100000km  ⇒  –25%
     public void calcularPrecoKm100000(int km) {
         if (km > 100_000) {
             tarifaDiaBase *= 0.75;   // sem cast, mantém centavos
         }
     }
 
-    // <10 anos  ⇒  –10 %
+    // <10anos  ⇒  –10%
     public void calcularPrecoAno2015(int ano) {
         if (ano < 2015) {
             tarifaDiaBase *= 0.90;
         }
     }
 
-    // elétrico  ⇒  –20 %
+    // elétrico  ⇒  –20%
     public void calcularPrecoEletrico(String conbustivel) {
         if (conbustivel.equalsIgnoreCase("Elétrico")) {
             tarifaDiaBase *= 0.80;
         }
     }
 
-    // híbrido  ⇒  –10 %
+    // híbrido  ⇒  –10%
     public void calcularPrecoHybrido(String conbustivel) {
         if (conbustivel.equalsIgnoreCase("Híbrido")) {
             tarifaDiaBase *= 0.90;
@@ -84,7 +84,7 @@ public class carrosCondi {
 
     
 
-    // marcas “caras”  ⇒  +20 %
+    // marcas “caras”  ⇒  +20%
     public void calcularPrecoPorMarcaCara(String marca) {
         String m = marca.toLowerCase();                 // normaliza
         if (m.equals("Rolls-Royce") || m.equals("Porsche")
@@ -93,7 +93,7 @@ public class carrosCondi {
         }
     }
 
-    // marcas “econômicas”  ⇒  –20 %
+    // marcas “econômicas”  ⇒  –20%
     public void calcularPreçoMarcasBaixas(String marca) {
         String m = marca.toLowerCase();
         if (m.equals("Fiat") || m.equals("Renault") || m.equals("Citroen")  
@@ -102,7 +102,7 @@ public class carrosCondi {
                 tarifaDiaBase *= 0.80;
         }
     }
-    /** Diesel ⇒ +5 %  (em vários países o seguro/custo de manutenção é maior) */
+    // Diesel ⇒ +5%
 public void calcularPrecoDiesel(String combustivel) {
     if (combustivel.equalsIgnoreCase("Diesel")) {
         tarifaDiaBase *= 1.05;
