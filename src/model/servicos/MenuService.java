@@ -113,10 +113,10 @@ public class MenuService {
                     }
                     break;
                 case 3:
-                    System.out.println("Tem que implementar o carrinho");
+                    AdicionarCarrinhoService.executarAdicaoAoCarrinho(daocar);
                     break;
                 case 4:
-                    System.out.println("Tem que implementar a finalizacao");
+                    CarrinhoService.finalizarAluguel();
                     break;
                 case 5:
                     System.out.println("Saindo da aplicação... Até logo!");
