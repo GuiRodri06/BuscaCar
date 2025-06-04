@@ -3,6 +3,7 @@ package model.entities.carros;
 public class carrosCondi {
 
     /* ---------- atributos ---------- */
+    private int id;
     private String modelo;
     private String submodelo;
     private int km;
@@ -13,8 +14,9 @@ public class carrosCondi {
     
 
     /* ---------- construtor ---------- */
-    public carrosCondi(String modelo, String submodelo, int km,
+    public carrosCondi(int id, String modelo, String submodelo, int km,
                        int ano, String conbustivel, int preçoCompra) {
+        this.id = id;
         this.modelo       = modelo;
         this.submodelo    = submodelo;
         this.km           = km;
@@ -28,6 +30,11 @@ public class carrosCondi {
     }
 
     /* ---------- getters / setters originais ---------- */
+
+    public int getId() {
+        return id;
+    }
+
     public String getModelo()               { return modelo; }
     public void   setModelo(String name)    { this.modelo = name; }
 

@@ -179,16 +179,17 @@ public class CarroDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String marca      = rs.getString("marca");
                 String modelo     = rs.getString("modelo");
                 int ano           = rs.getInt("ano");
                 int preco         = (int) rs.getDouble("preco");  // pode arredondar ou converter para int
                 int km            = rs.getInt("km");
                 String combustivel = rs.getString("combustivel");
-                
+
 
                 carrosCondi carro = new carrosCondi(
-                        marca, modelo, km, ano, combustivel, preco);
+                        id, marca, modelo, km, ano, combustivel, preco);
 
                 // aplica as regras de negócio
                 carro.calcularPrecoKm100000(km);
@@ -216,8 +217,8 @@ public class CarroDAO {
         System.out.println("======= CARROS COM TARIFA CALCULADA =======");
 
         for (carrosCondi c : lista) {
-            System.out.printf("Modelo: %-10s | Submodelo: %-12s | Ano: %d | Km: %d | Combustível: %-9s | Tarifa €/dia: %.2f%n",
-                    c.getModelo(), c.getSubmodelo(), c.getAno(), c.getKm(), c.getConbustivel(), c.getTarifaDiaBase());
+            System.out.printf("ID: %-3d | Modelo: %-10s | Submodelo: %-12s | Ano: %d | Km: %d | Combustível: %-9s | Tarifa €/dia: %.2f%n",
+                    c.getId(), c.getModelo(), c.getSubmodelo(), c.getAno(), c.getKm(), c.getConbustivel(), c.getTarifaDiaBase());
         }
     }
 

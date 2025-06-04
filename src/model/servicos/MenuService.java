@@ -82,16 +82,17 @@ public class MenuService {
 
         Cliente cliente = (Cliente) AutenticacaoLogin.userLogado; // casting para acessar a autenticacao do user e o objeto que foi instanciado
         CarroDAO daocar = new CarroDAO();
-        
+        CarrinhoCliente carrinho = new CarrinhoCliente();
 
         while (true) {
             System.out.println("\n========== MENU ==========");
             System.out.println();
             System.out.println("[1] - Lista de carros"); // adcionar a lista de carros
             System.out.println("[2] - Acessar a conta");
-            System.out.println("[3] - Acessar o carrinho");
-            System.out.println("[4] - Finalizar o aluguel");
-            System.out.println("[5] - Sair");
+            System.out.println("[3] - Escolher um carro");
+            System.out.println("[4] - Visualizar o carrinho");
+            System.out.println("[5] - Finalizar o aluguel");
+            System.out.println("[6] - Sair");
 
             System.out.print("\nQual área voce vai querer: ");
             int i = txt.nextInt();
@@ -113,12 +114,15 @@ public class MenuService {
                     }
                     break;
                 case 3:
-                    AdicionarCarrinhoService.executarAdicaoAoCarrinho(daocar);
+                    carrinho.adicionarAoCarrinhoPorId();
                     break;
                 case 4:
-                    CarrinhoService.finalizarAluguel();
+                    carrinho.verCarrinho();
                     break;
                 case 5:
+                    carrinho.finalizarCompra();
+                    break;
+                case 6:
                     System.out.println("Saindo da aplicação... Até logo!");
                     System.exit(0); // Encerra a aplicação
                     break;

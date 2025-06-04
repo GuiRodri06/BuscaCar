@@ -23,8 +23,8 @@ public class AutenticacaoLogin {
         if (dao.login(email, senha)) {
             userLogado = dao.buscarPorEmail(email);
             if (userLogado != null) {
-                System.out.printf("Login bem-sucedido! Seja bem-vindo, %s [%s]%n",
-                        userLogado.getName(), userLogado.getTipo());
+                System.out.printf("Login bem-sucedido! Seja bem-vindo, %s ",
+                        userLogado.getName());
             } else {
                 System.out.println("Erro ao buscar usuário logado.");
             }
