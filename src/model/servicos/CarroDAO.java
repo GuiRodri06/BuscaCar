@@ -6,7 +6,7 @@ import model.entities.carros.carrosCondi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarroDAO {
+public class CarroDAO implements InterfaceCarroDAO{
 
     private Connection conectar() {
         String url = "jdbc:sqlite:db/sistema.db";

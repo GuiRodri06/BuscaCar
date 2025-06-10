@@ -7,7 +7,7 @@ import model.entities.contas.Usuario;
 import java.sql.*;
 import java.util.Scanner;
 
-public class UsuarioDAO {
+public class UsuarioDAO implements InterfaceUsuarioDAO {
 
     private Connection conectar() {
         String url = "jdbc:sqlite:db/sistema.db";
