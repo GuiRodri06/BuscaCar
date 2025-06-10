@@ -1,8 +1,6 @@
 package model.entities.contas;
 
-import model.servicos.AcoesCliente;
-
-public class Cliente extends Usuario implements AcoesCliente {
+public class Cliente extends Usuario {
 
     private Integer nif;
     private Integer telemovel;
@@ -39,18 +37,6 @@ public class Cliente extends Usuario implements AcoesCliente {
                  getEmail(), getSenha(), getName(), getTelemovel(), getNif());
     }
 
-    @Override
-    public void adcionarAoCarrinho() {
-        // TODO: Implementar funcionalidade
-    }
-
-    @Override
-    public void realizarCompra() {
-        // TODO: Implementar funcionalidade
-    }
-
-
-    @Override
     public void alterarEmail(String novoEmail) {
         if (novoEmail != null && novoEmail.contains("@")) {
             setEmail(novoEmail);
@@ -60,7 +46,6 @@ public class Cliente extends Usuario implements AcoesCliente {
         }
     }
 
-    @Override
     public void alterarNome(String novoNome) {
         if (novoNome != null && !novoNome.isEmpty()) {
             setName(novoNome);
@@ -70,7 +55,6 @@ public class Cliente extends Usuario implements AcoesCliente {
         }
     }
 
-    @Override
     public void alterarSenha(String senhaAtual, String novaSenha) {
         if (getSenha().equals(senhaAtual)) {
             setSenha(novaSenha);
@@ -80,7 +64,6 @@ public class Cliente extends Usuario implements AcoesCliente {
         }
     }
 
-    @Override
     public void alterarNumero(int novoNumero) {
         if (novoNumero > 0) {
             setTelemovel(novoNumero);

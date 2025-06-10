@@ -6,14 +6,12 @@ import model.servicos.HomePage;
 import model.servicos.MenuService;
 
 import java.util.Locale;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
-        Scanner txt = new Scanner(System.in);
 
         BancoSQLite.criarTabelas();
 

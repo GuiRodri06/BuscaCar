@@ -1,8 +1,6 @@
 package model.entities.contas;
 
-import model.servicos.AcoesAdministrador;
-
-public class Administrador extends Usuario implements AcoesAdministrador {
+public class Administrador extends Usuario {
 
     public Administrador() {}
 
@@ -16,8 +14,4 @@ public class Administrador extends Usuario implements AcoesAdministrador {
                  getEmail(), getSenha());
     }
 
-    @Override
-    public void visualizarRelatorios() {
-        // TODO: implementar visualização de relatórios
-    }
 }
