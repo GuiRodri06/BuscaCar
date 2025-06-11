@@ -1,3 +1,4 @@
+//Guilherme Rodrigues
 package model.entities.contas;
 
 public class Administrador extends Usuario {

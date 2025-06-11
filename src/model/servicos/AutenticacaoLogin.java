@@ -1,3 +1,4 @@
+//Guilherme Rodrigues
 package model.servicos; // Define o pacote onde essa classe está inserida
 
 import model.entities.contas.Usuario; // Importa a classe Usuario, que representa o usuário do sistema
