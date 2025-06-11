@@ -1,3 +1,4 @@
+//Guilherme Lucas
 package model.entities.carros;
 
 public class carrosCondi {
@@ -25,8 +26,8 @@ public class carrosCondi {
         this.preçoCompra  = preçoCompra;
         
 
-        /* conversão compra → hora */
-        this.tarifaDiaBase = preçoCompra * 0.002;
+        /* conversão compra → dia */
+        this.tarifaDiaBase = preçoCompra * 0.002; 
     }
 
     /* ---------- getters / setters originais ---------- */
@@ -78,7 +79,7 @@ public class carrosCondi {
     // elétrico  ⇒  –20%
     public void calcularPrecoEletrico(String conbustivel) {
         if (conbustivel.equalsIgnoreCase("Elétrico")) {
-            tarifaDiaBase *= 0.80;
+            tarifaDiaBase *= 0.80;  
         }
     }
 
@@ -96,7 +97,7 @@ public class carrosCondi {
         String m = marca.toLowerCase();                 // normaliza
         if (m.equals("Rolls-Royce") || m.equals("Porsche")
             || m.equals("Lamborghini") || m.equals("Audi")) {
-                tarifaDiaBase *= 1.20;
+                tarifaDiaBase *= 1.20;  
         }
     }
 
